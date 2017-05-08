@@ -33,7 +33,8 @@
             android:layout_below="@+id/editText"
             android:onClick="btnEvent"
             tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="8dp" />
+            tools:layout_editor_absoluteX="8dp"
+            android:contentDescription="Mostrar mensaje"/>
 
         <Button
             android:id="@+id/btnAddView"
@@ -42,7 +43,8 @@
             android:layout_height="wrap_content"
             android:text="Open AddView"
             tools:layout_editor_absoluteX="130dp"
-            tools:layout_editor_absoluteY="115dp" />
+            tools:layout_editor_absoluteY="115dp"
+            android:contentDescription="Agregar vista"/>
         <Button
             android:id="@+id/btnCustomView"
             android:layout_below="@+id/btnAddView"
@@ -50,14 +52,16 @@
             android:layout_height="wrap_content"
             android:text="Open CustomView"
             tools:layout_editor_absoluteX="130dp"
-            tools:layout_editor_absoluteY="115dp" />
+            tools:layout_editor_absoluteY="115dp"
+            android:contentDescription="Abrir CustomView"/>
 
         <Button
             android:id="@+id/btnRecicler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnCustomView"
-            android:text="Open ReciclerView" />
+            android:text="Open ReciclerView"
+            android:contentDescription="Mostrar ReciclerView"/>
 
     </RelativeLayout>
 

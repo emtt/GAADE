@@ -48,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        TextView label = (TextView) findViewById(R.id.textView);
+        String contentDescription = "Este texview mostrará tu nombre";
+        label.setContentDescription(contentDescription);
+
     }
 
     public void btnEvent(View v){
