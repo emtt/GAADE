@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnAddView, btnCustomView, btnRecicler;
+    Button btnAddView, btnCustomView, btnRecicler, btnMenuDrawer;
 
     Context context;
     @Override
@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         btnAddView = (Button) findViewById(R.id.btnAddView);
         btnCustomView = (Button) findViewById(R.id.btnCustomView);
         btnRecicler = (Button) findViewById(R.id.btnRecicler);
+        btnMenuDrawer = (Button) findViewById(R.id.btnMenuDrawer);
+
 
         btnAddView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ReciclerActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+        btnMenuDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, NavDrawerActivity.class);
                 context.startActivity(intent);
             }
         });

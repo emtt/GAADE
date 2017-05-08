@@ -23,7 +23,8 @@
         <activity
             android:name=".CustomViewActivity"
             android:theme="@style/customTheme" />
-        <activity android:name=".ReciclerActivity"></activity>
+        <activity android:name=".ReciclerActivity" />
+        <activity android:name=".NavDrawerActivity"></activity>
     </application>
 
 </manifest>

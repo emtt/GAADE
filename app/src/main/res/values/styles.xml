@@ -8,12 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="customTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="customTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/cPrimary</item>
         <item name="colorPrimaryDark">@color/cPrimaryDark</item>
         <item name="colorAccent">@color/cAccent</item>
         <item name="android:buttonStyle">@style/button</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="button" parent="@android:style/Widget.Button">
