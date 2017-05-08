@@ -11,7 +11,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnAddView;
+    Button btnAddView, btnCustomView;
+
     Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +21,20 @@ public class MainActivity extends AppCompatActivity {
 
         context = MainActivity.this;
         btnAddView = (Button) findViewById(R.id.btnAddView);
+        btnCustomView = (Button) findViewById(R.id.btnCustomView);
 
         btnAddView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, AddView.class);
+                context.startActivity(intent);
+            }
+        });
+
+        btnCustomView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CustomViewActivity.class);
                 context.startActivity(intent);
             }
         });
