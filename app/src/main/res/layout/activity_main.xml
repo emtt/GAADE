@@ -43,6 +43,14 @@
             android:text="Open AddView"
             tools:layout_editor_absoluteX="130dp"
             tools:layout_editor_absoluteY="115dp" />
+        <Button
+            android:id="@+id/btnCustomView"
+            android:layout_below="@+id/btnAddView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open CustomView"
+            tools:layout_editor_absoluteX="130dp"
+            tools:layout_editor_absoluteY="115dp" />
 
     </RelativeLayout>
 
