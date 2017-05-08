@@ -52,6 +52,13 @@
             tools:layout_editor_absoluteX="130dp"
             tools:layout_editor_absoluteY="115dp" />
 
+        <Button
+            android:id="@+id/btnRecicler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnCustomView"
+            android:text="Open ReciclerView" />
+
     </RelativeLayout>
 
 
