@@ -59,6 +59,13 @@
             android:layout_below="@+id/btnCustomView"
             android:text="Open ReciclerView" />
 
+        <Button
+            android:id="@+id/btnDB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnRecicler"
+            android:text="Open Database" />
+
     </RelativeLayout>
 
 
