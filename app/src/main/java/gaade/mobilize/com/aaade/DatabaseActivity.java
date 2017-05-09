@@ -2,19 +2,31 @@ package gaade.mobilize.com.aaade;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import gaade.mobilize.com.aaade.Adapters.LibroAdapter;
 import gaade.mobilize.com.aaade.Database.MySQLiteHelper;
 import gaade.mobilize.com.aaade.Models.Libro;
 
 public class DatabaseActivity extends AppCompatActivity {
+
     public MySQLiteHelper db;
-    Button btnAdd, btnGetLast;
+    Button btnAdd, btnGetLast, btnGetAll, btnDelete;
     TextView txtAutor, txtTitulo;
+    private RecyclerView rv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +35,8 @@ public class DatabaseActivity extends AppCompatActivity {
 
         btnAdd      = (Button) findViewById(R.id.btnAdd);
         btnGetLast  = (Button) findViewById(R.id.btnGetLast);
+        btnGetAll   = (Button) findViewById(R.id.btnGetAll);
+        btnDelete   = (Button) findViewById(R.id.btnDelete);
         txtAutor    = (TextView) findViewById(R.id.txtAutor);
         txtTitulo   = (TextView) findViewById(R.id.txtTitulo);
 
@@ -32,8 +46,11 @@ public class DatabaseActivity extends AppCompatActivity {
                 db.insertLibro(new Libro(txtTitulo.getText().toString(),txtAutor.getText().toString()));
                 txtAutor.setText(null);
                 txtTitulo.setText(null);
+                LibroAdapter adapter = new LibroAdapter(db.getLibros());
+                rv.setAdapter(adapter);
             }
         });
+
         btnGetLast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,11 +60,37 @@ public class DatabaseActivity extends AppCompatActivity {
             }
         });
 
-        /*ArrayList<Libro> librosList = db.getLibros();
-        Iterator itr = librosList.iterator();
-        while (itr.hasNext()) {
-            HashMap<String, String> map = (HashMap<String, String>) itr.next();
-            Log.d("arrLIST", map.get("titulo")+ "-" +map.get("autor"));
-        }*/
+        btnGetAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ArrayList<Libro> librosList = db.getLibros();
+                for (Libro l: librosList) {
+                    System.out.println("Autor:" + l.getAutor() + " - Título: "+ l.getTitulo());
+                }
+
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                db.deleteAll();
+                LibroAdapter adapter = new LibroAdapter(db.getLibros());
+                rv.setAdapter(adapter);
+            }
+        });
+
+        /*LISTA EN RV*/
+        rv=(RecyclerView)findViewById(R.id.rv);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
+
+        LibroAdapter adapter = new LibroAdapter(db.getLibros());
+        rv.setAdapter(adapter);
+
     }
 }

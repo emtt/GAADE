@@ -41,27 +41,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 "autor TEXT)";
         db.execSQL(CREATE_FAVORITOS_TABLE);
 
-        /*
-        insertLibro(new Libro("El juguete rabioso", "Roberto Arlt "));
-        insertLibro(new Libro("El nombre de la rosa", "Umberto Eco "));
-        insertLibro(new Libro("La visión de los vencidos", "Miguel León Portilla"));
-        insertLibro(new Libro("El maestro y Margarita", "Mijail Bulgákov "));
-        insertLibro(new Libro("Nada", "Carmen Laforet"));
-        insertLibro(new Libro("Hamlet", "William Shakespeare"));
-        insertLibro(new Libro("Fahrenheit 451", "Ray Bradbury"));
-        insertLibro(new Libro("Pedro Páramo", "Juan Rulfo"));
-        insertLibro(new Libro("El muro", "Jean Paul Sartre"));
-        insertLibro(new Libro("Un mundo feliz", "Aldous Huxley"));
-        insertLibro(new Libro("El túnel", "Ernesto Sabato"));
-        insertLibro(new Libro("1984", "George Orwell"));
-        insertLibro(new Libro("Cuentos", "Horacio Quiroga"));
-        insertLibro(new Libro("El corazón de las tinieblas", "Joseph Conrad"));
-        insertLibro(new Libro("La muerte de Iván Ilich", "León Tolstoi"));
-        insertLibro(new Libro("Los de abajo", "Mariano Azuela"));
-        insertLibro(new Libro("Los relámpagos de agosto", "Jorge Ibargüengoitia"));
-        insertLibro(new Libro("El pozo. Para una tumba sin nombre", "Juan Carlos Onetti "));
-        insertLibro(new Libro("Moby Dick", "Herman Melville"));
-        */
     }
 
     public void insertLibro(Libro l) {
@@ -74,6 +53,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 values);
         db.close();
         Log.d("MYSQLITEHELPER", "REGISTRO INSERTADO EN DB");
+    }
+
+    public boolean deleteAll() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String whereClause = "id!=0";
+        return db.delete(TABLE_BOOKS, whereClause, null) > 0;
     }
 
     public ArrayList<Libro> getLibros(){
