@@ -66,6 +66,13 @@
             android:layout_below="@+id/btnRecicler"
             android:text="Open Database" />
 
+        <Button
+            android:id="@+id/btnRaw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnDB"
+            android:text="Open from Raw" />
+
     </RelativeLayout>
 
 
