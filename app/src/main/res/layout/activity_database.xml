@@ -59,10 +59,19 @@
             android:layout_below="@+id/btnGetAll"
             android:text="Borrar todos" />
 
+        <Button
+            android:id="@+id/btnContentProvider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/btnDelete"
+            android:text="Desde ContentProvider" />
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv"
-            android:layout_below="@+id/btnDelete"
+            android:layout_below="@+id/btnContentProvider"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
