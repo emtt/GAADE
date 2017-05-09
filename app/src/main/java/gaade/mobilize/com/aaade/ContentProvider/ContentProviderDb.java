@@ -63,10 +63,7 @@ public class ContentProviderDb  extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues initialValues) {
-        /*String table = getTableName(uri);
-        SQLiteDatabase database = db.getWritableDatabase();
-        long value = database.insert(table, null, initialValues);
-        return Uri.withAppendedPath(CONTENT_URI, String.valueOf(value));*/
+
         switch (uriMatcher.match(uri)) {
             case ALL_BOOKS:
                 //do nothing
@@ -74,7 +71,7 @@ public class ContentProviderDb  extends ContentProvider {
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
-        
+
         SQLiteDatabase database = db.getWritableDatabase();
 
         long id =  database.insert("books",
