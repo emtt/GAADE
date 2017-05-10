@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -21,7 +22,7 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnAddView, btnCustomView, btnRecicler, btnDB, btnRaw, btnSharedPref, btnNotification;
+    Button btnAddView, btnCustomView, btnRecicler, btnDB, btnRaw, btnSharedPref, btnNotification, btnLoader;
 
     Context context;
     SharedPreferences sharedpreferences;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         btnRaw          = (Button) findViewById(R.id.btnRaw);
         btnSharedPref   = (Button) findViewById(R.id.btnSharedPref);
         btnNotification = (Button) findViewById(R.id.btnNotification);
+        btnLoader       = (Button) findViewById(R.id.btnLoader);
 
         btnAddView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +118,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        btnLoader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, LoadersActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 
