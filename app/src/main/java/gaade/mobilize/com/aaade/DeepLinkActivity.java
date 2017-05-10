@@ -15,7 +15,7 @@ public class DeepLinkActivity extends AppCompatActivity {
         Uri data = this.getIntent().getData();
         if (data != null && data.isHierarchical()) {
             String uri = this.getIntent().getDataString();
-            Log.i("MyApp", "Deep link clicked " + uri);
+            Log.i("MyApp", "El deeplink ha sido invocado " + uri);
         }
     }
 }
