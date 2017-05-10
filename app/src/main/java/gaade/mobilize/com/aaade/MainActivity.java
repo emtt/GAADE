@@ -1,29 +1,27 @@
 package gaade.mobilize.com.aaade;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-
-import gaade.mobilize.com.aaade.Database.MySQLiteHelper;
-import gaade.mobilize.com.aaade.Models.Libro;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnAddView, btnCustomView, btnRecicler, btnDB, btnRaw, btnSharedPref;
+    Button btnAddView, btnCustomView, btnRecicler, btnDB, btnRaw, btnSharedPref, btnNotification;
 
     Context context;
     SharedPreferences sharedpreferences;
@@ -52,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         btnDB           = (Button) findViewById(R.id.btnDB);
         btnRaw          = (Button) findViewById(R.id.btnRaw);
         btnSharedPref   = (Button) findViewById(R.id.btnSharedPref);
+        btnNotification = (Button) findViewById(R.id.btnNotification);
 
         btnAddView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,11 +109,48 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendNotification();
+            }
+        });
+
+
+
     }
 
-    public void btnEvent(View v){
-        TextView textView = (TextView) findViewById(R.id.textView);
-        EditText editText = (EditText) findViewById(R.id.editText);
-        textView.setText("Hola , " + editText.getText().toString() + "!");
+    public void sendNotification(){
+        Intent intent = new Intent(this, ReciclerActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent, 0);
+
+
+        if (Build.VERSION.SDK_INT < 16) {
+            NotificationCompat.Builder mBuilder =
+                    new NotificationCompat.Builder(this)
+                            .setSmallIcon(R.drawable.ic_notification)
+                            .setContentTitle("Mira la lista de libros nuevos")
+                            .setContentText("Hay novedades interesantes");
+            Intent resultIntent = new Intent(this, MainActivity.class);
+            mBuilder.setContentIntent(pIntent);
+            NotificationManager mNotificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManager.notify(1, mBuilder.build());
+            Log.d("MainActivity", "API < 16");
+        } else {
+            Notification noti = new Notification.Builder(this)
+                    .setContentTitle("Mira la lista de libros nuevos")
+                    .setContentText("Hay novedades interesantes")
+                    .setSmallIcon(R.drawable.ic_notification)
+                    .setContentIntent(pIntent)
+                    .build();
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            // hide the notification after its selected
+            noti.flags |= Notification.FLAG_AUTO_CANCEL;
+            notificationManager.notify(0, noti);
+            Log.d("MainActivity", "API > 16");
+        }
+
+
     }
 }

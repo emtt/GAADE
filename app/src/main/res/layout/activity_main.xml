@@ -80,6 +80,13 @@
             android:layout_below="@+id/btnRaw"
             android:text="Open SharedPreferences" />
 
+        <Button
+            android:id="@+id/btnNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnSharedPref"
+            android:text="Enviar notificación" />
+
     </RelativeLayout>
 
 
