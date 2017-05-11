@@ -101,6 +101,13 @@
             android:layout_below="@+id/btnLoader"
             android:text="Alarm Manager" />
 
+        <Button
+            android:id="@+id/btnJobS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnAlarm"
+            android:text="jobScheduler" />
+
     </RelativeLayout>
 
 
