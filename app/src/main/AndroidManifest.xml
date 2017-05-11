@@ -78,12 +78,18 @@
 
         <receiver android:name=".AlarmReciever" />
 
-        <activity android:name=".JobEschedulerActivity"></activity>
+        <activity android:name=".JobEschedulerActivity" />
 
         <service
             android:name=".MyJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"
-            android:exported="true"/>
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".PlayService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".ServiceActivity"></activity>
     </application>
 
 </manifest>
