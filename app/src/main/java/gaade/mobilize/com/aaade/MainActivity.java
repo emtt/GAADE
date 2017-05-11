@@ -22,7 +22,7 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnAddView, btnCustomView, btnRecicler, btnDB, btnRaw, btnSharedPref, btnNotification, btnLoader;
+    Button btnAddView, btnCustomView, btnRecicler, btnDB, btnRaw, btnSharedPref, btnNotification, btnLoader, btnAlarm;
 
     Context context;
     SharedPreferences sharedpreferences;
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         btnSharedPref   = (Button) findViewById(R.id.btnSharedPref);
         btnNotification = (Button) findViewById(R.id.btnNotification);
         btnLoader       = (Button) findViewById(R.id.btnLoader);
+        btnAlarm       = (Button) findViewById(R.id.btnAlarm);
 
         btnAddView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +123,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, LoadersActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+        btnAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AlarmActivity.class);
                 context.startActivity(intent);
             }
         });
