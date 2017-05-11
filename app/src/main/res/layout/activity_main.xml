@@ -94,6 +94,13 @@
             android:layout_below="@+id/btnNotification"
             android:text="Cargar Loader" />
 
+        <Button
+            android:id="@+id/btnAlarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnLoader"
+            android:text="Alarm Manager" />
+
     </RelativeLayout>
 
 
