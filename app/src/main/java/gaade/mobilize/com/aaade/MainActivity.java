@@ -22,7 +22,7 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnAddView, btnCustomView, btnRecicler, btnDB, btnRaw, btnSharedPref, btnNotification, btnLoader, btnAlarm;
+    Button btnAddView, btnCustomView, btnRecicler, btnDB, btnRaw, btnSharedPref, btnNotification, btnLoader, btnAlarm, btnJobS;
 
     Context context;
     SharedPreferences sharedpreferences;
@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         btnSharedPref   = (Button) findViewById(R.id.btnSharedPref);
         btnNotification = (Button) findViewById(R.id.btnNotification);
         btnLoader       = (Button) findViewById(R.id.btnLoader);
-        btnAlarm       = (Button) findViewById(R.id.btnAlarm);
+        btnAlarm        = (Button) findViewById(R.id.btnAlarm);
+        btnJobS         = (Button) findViewById(R.id.btnJobS);
 
         btnAddView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +132,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, AlarmActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+        btnJobS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, JobEschedulerActivity.class);
                 context.startActivity(intent);
             }
         });
