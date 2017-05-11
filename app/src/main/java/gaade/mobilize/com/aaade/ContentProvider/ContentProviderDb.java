@@ -83,6 +83,15 @@ public class ContentProviderDb  extends ContentProvider {
         return Uri.parse(CONTENT_URI + "/" + id);
     }
 
+    @Override
+    public Cursor query(Uri uri, String[] projection, String selection,
+                        String[] selectionArgs, String sortOrder) {
+        String table =getTableName(uri);
+        SQLiteDatabase database = db.getReadableDatabase();
+        Cursor cursor =database.query(table,  projection, selection, selectionArgs, null, null, sortOrder);
+        return cursor;
+    }
+
     public static String getTableName(Uri uri){
         String value = uri.getPath();
         value = value.replace("/", "");//we need to remove '/'
@@ -96,17 +105,6 @@ public class ContentProviderDb  extends ContentProvider {
         SQLiteDatabase dataBase=db.getWritableDatabase();
         return dataBase.delete(table, where, args);
 
-    }
-
-
-
-    @Override
-    public Cursor query(Uri uri, String[] projection, String selection,
-                        String[] selectionArgs, String sortOrder) {
-        String table =getTableName(uri);
-        SQLiteDatabase database = db.getReadableDatabase();
-        Cursor cursor =database.query(table,  projection, selection, selectionArgs, null, null, sortOrder);
-        return cursor;
     }
 
     @Override
@@ -126,6 +124,12 @@ public class ContentProviderDb  extends ContentProvider {
                 return "vnd.android.cursor.item/vnd.gaade.mobilize.com.aaade.ContentProvider.ContentProviderDb.books";
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + arg0);
+        }
+    }
+
+    private void notifyChanges(Uri uri){
+        if (getContext() != null && getContext().getContentResolver() != null){
+            getContext().getContentResolver().notifyChange(uri, null);
         }
     }
 
