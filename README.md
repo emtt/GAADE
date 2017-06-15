@@ -1,2 +1,1 @@
-# GAADE
-Google's Associate Android Developer Exam 
+Android Best Practices
